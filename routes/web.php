@@ -20,4 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-Route::resource('/konsultasi', [App\Http\Controllers\KonsultasiController::class, 'index']);
+
+Route::prefix('konsultasi')->name('konsultasi.')->group(function () {
+    Route::get('/', [App\Http\Controllers\KonsultasiController::class, 'index'])->name('index');
+});
+// Route::resource('/konsultasi', [App\Http\Controllers\KonsultasiController::class, 'index']);
