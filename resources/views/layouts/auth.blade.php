@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\icon\icofont\css\icofont.css') }}">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\css\style.css') }}">
+    {{-- reCAPTCHA --}}
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
 </head>
 
 <body class="fix-menu">
