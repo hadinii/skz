@@ -36,7 +36,7 @@ class KonsultasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('konsultasi.index');
     }
 
     /**

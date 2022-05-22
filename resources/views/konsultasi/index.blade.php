@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.auth')
 
 @section('content')
     {{-- <div class="card">

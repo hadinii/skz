@@ -23,6 +23,7 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
 Route::prefix('konsultasi')->name('konsultasi.')->group(function () {
     Route::get('/', [App\Http\Controllers\KonsultasiController::class, 'index'])->name('index')->middleware('auth');
+    Route::get('/create', [App\Http\Controllers\KonsultasiController::class, 'create'])->name('create')->middleware('auth');
     Route::get('/{konsultasi}', [App\Http\Controllers\KonsultasiController::class, 'show'])->name('show')->middleware('auth');
     Route::put('/{konsultasi}', [App\Http\Controllers\KonsultasiController::class, 'update'])->name('update')->middleware('auth');
 });
