@@ -12,10 +12,21 @@ class KonsultasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Konsultasi::all();
-        return view('konsultasi.index', compact('data'));
+        $filter = $request->filter;
+        $konsultasi = Konsultasi::when($filter == "unanswered", function($q) use ($filter){
+                return $q->whereNull('jawaban_at');
+            })
+            ->when($filter == "answered", function($q) use ($filter){
+                return $q->whereNotNull('jawaban_at');
+            })
+            ->get();
+
+        $data = [
+            'konsultasi' => $konsultasi
+        ];
+        return view('admin.konsultasi.index', $data);
     }
 
     /**
@@ -47,7 +58,10 @@ class KonsultasiController extends Controller
      */
     public function show(Konsultasi $konsultasi)
     {
-        //
+        $data = [
+            'konsultasi' => $konsultasi
+        ];
+        return view('admin.konsultasi.show', $data);
     }
 
     /**
@@ -70,7 +84,12 @@ class KonsultasiController extends Controller
      */
     public function update(Request $request, Konsultasi $konsultasi)
     {
-        //
+        $konsultasi->update($request->only(['jawaban']));
+
+        $data = [
+            'konsultasi' => $konsultasi
+        ];
+        return view('admin.konsultasi.show', $data);
     }
 
     /**

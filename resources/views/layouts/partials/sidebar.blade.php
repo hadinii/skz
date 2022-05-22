@@ -2,14 +2,14 @@
     <div class="pcoded-inner-navbar main-menu">
         <div class="pcoded-navigatio-lavel">Navigation</div>
         <ul class="pcoded-item pcoded-left-item">
-            <li class="active">
-                <a href="javascript:void(0)">
+            <li class="{{ Request::is('dashboard') ? "active" : ""}}">
+                <a href="{{ route('dashboard') }}">
                     <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                     <span class="pcoded-mtext">Dashboard</span>
                 </a>
             </li>
-            <li class="">
-                <a href="navbar-light.htm">
+            <li class="{{ Request::is('konsultasi') ? "active" : ""}}">
+                <a href="{{ route('konsultasi.index', ['filter' => 'unanswered']) }}">
                     <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
                     <span class="pcoded-mtext">Konsultasi Zakat</span>
                 </a>

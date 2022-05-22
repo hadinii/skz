@@ -18,9 +18,9 @@ class CreateKonsultasiTable extends Migration
             $table->string('nama');
             $table->string('email');
             $table->text('pertanyaan');
-            $table->text('jawaban');
-            $table->integer('jawaban_by');
-            $table->timestamp('jawaban_at');
+            $table->text('jawaban')->nullable();
+            $table->integer('jawaban_by')->nullable();
+            $table->timestamp('jawaban_at')->nullable();
             $table->timestamps();
         });
     }
