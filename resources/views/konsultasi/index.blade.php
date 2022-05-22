@@ -1,4 +1,5 @@
 @extends('layout.app')
+
 @section('content')
     {{-- <div class="card">
     <div class="card-header">
@@ -42,9 +43,14 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-6">
+            {!! htmlFormSnippet() !!}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <button type="submit" value="submit"></button>
+                <button type="submit" class="btn btn-success" name="kirim">Kirim</button>
             </div>
         </div>
     </div>
