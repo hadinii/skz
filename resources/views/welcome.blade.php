@@ -79,7 +79,7 @@
                                 <p class="wow fadeInUp" data-wow-delay="0.2s">
                                     Konsultasi zakat, cepat dan mudah. Dijawab langsung oleh oleh ahli-nya. <br class="hidden-xs"> Konsultasikan zakat anda sekarang!
                                 </p>
-                                <a class="btn btn-primary btn-action" data-wow-delay="0.2s" href="#">Konsultasi</a>
+                                <a class="btn btn-primary btn-action" data-wow-delay="0.2s" href="{{ route('konsultasi.create') }}">Konsultasi</a>
                             </div>
                             <div class="col-md-12">
                                 <div class="hero-image">
