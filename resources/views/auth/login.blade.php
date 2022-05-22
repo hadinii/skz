@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.auth')
 
 @section('content')
 <div class="container">
@@ -43,7 +43,7 @@
                                         </label>
                                     </div>
                                     <div class="forgot-phone text-right f-right">
-                                        <a href="auth-reset-password.htm" class="text-right f-w-600"> Forgot Password?</a>
+                                        <a href="{{ route('password.request') }}" class="text-right f-w-600"> Forgot Password?</a>
                                     </div>
                                 </div>
                             </div>

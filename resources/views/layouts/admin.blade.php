@@ -23,7 +23,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\css\style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\css\jquery.mCustomScrollbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminty\assets\scss\partials\menu\_pcmenu.htm') }}">
+    @stack('styles')
 </head>
 
 <body>
@@ -77,7 +77,7 @@
 <script src="{{ asset('adminty\assets\js\jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <!-- Custom js -->
 <script type="text/javascript" src="{{ asset('adminty\assets\js\script.js') }}"></script>
-@method('scripts')
+@stack('scripts')
 </body>
 
 </html>
