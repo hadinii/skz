@@ -15,10 +15,10 @@ class KonsultasiController extends Controller
     public function index(Request $request)
     {
         $filter = $request->filter;
-        $konsultasi = Konsultasi::when($filter == "unanswered", function($q) use ($filter){
-                return $q->whereNull('jawaban_at');
-            })
-            ->when($filter == "answered", function($q) use ($filter){
+        $konsultasi = Konsultasi::when($filter == "unanswered", function ($q) use ($filter) {
+            return $q->whereNull('jawaban_at');
+        })
+            ->when($filter == "answered", function ($q) use ($filter) {
                 return $q->whereNotNull('jawaban_at');
             })
             ->get();
@@ -47,7 +47,20 @@ class KonsultasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $form = $this->validate($request, [
+            'nama' => 'required|string',
+            'email' => 'required|string',
+            'pertanyaan' => 'required|string',
+            'jawaban' => '',
+            'jawaban_by' => '',
+            'jawaban_at' => '',
+            'g-recaptcha-response' => 'recaptcha',
+        ]);
+
+        Konsultasi::create($form);
+
+        return redirect('/');
     }
 
     /**

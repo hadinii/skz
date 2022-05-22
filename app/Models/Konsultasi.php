@@ -43,6 +43,7 @@ class Konsultasi extends Model
         });
     }
 
+
     // Getters
     public function getJawabanByAttribute($value)
     {
@@ -53,4 +54,5 @@ class Konsultasi extends Model
     {
         return is_null($this->attributes['jawaban_at']) ? "Belum Dijawab" : "Sudah Dijawab";
     }
+
 }

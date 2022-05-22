@@ -19,8 +19,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    {{-- reCAPTCHA --}}
-    {!! ReCaptcha::htmlScriptTagJsApi() !!}
+    {{-- reCAPTCHA
+    {!! ReCaptcha::htmlScriptTagJsApi() !!} --}}
 </head>
 <body>
     <div id="app">

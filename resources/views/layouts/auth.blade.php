@@ -19,7 +19,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\css\style.css') }}">
     {{-- reCAPTCHA --}}
-    {!! ReCaptcha::htmlScriptTagJsApi() !!}
+    {{-- {!! ReCaptcha::htmlScriptTagJsApi() !!} --}}
 </head>
 
 <body class="fix-menu">
