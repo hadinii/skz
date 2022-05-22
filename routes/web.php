@@ -29,4 +29,8 @@ Route::prefix('konsultasi')->name('konsultasi.')->group(function () {
     Route::post('/', [App\Http\Controllers\KonsultasiController::class, 'store'])->name('store');
 
 });
-// Route::resource('/konsultasi', [App\Http\Controllers\KonsultasiController::class, 'index']);
+
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('index')->middleware('auth');
+    Route::post('/', [App\Http\Controllers\UserController::class, 'store'])->name('store')->middleware('auth');
+});
