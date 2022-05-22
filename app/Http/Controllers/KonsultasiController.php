@@ -14,8 +14,7 @@ class KonsultasiController extends Controller
      */
     public function index()
     {
-        $data = Konsultasi::all();
-        return view('konsultasi.index', compact('data'));
+        return view('konsultasi.index');
     }
 
     /**
