@@ -17,7 +17,7 @@ class KonsultasiMail extends Mailable
      *
      * @var \App\Models\Konsultasi
      */
-    protected $konsultasi;
+    public $konsultasi;
 
     /**
      * Create a new message instance.
