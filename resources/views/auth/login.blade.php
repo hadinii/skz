@@ -52,16 +52,6 @@
                                     <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <p class="text-inverse text-left m-b-0">Thank you.</p>
-                                    <p class="text-inverse text-left"><a href="index-1.htm"><b class="f-w-600">Back to website</b></a></p>
-                                </div>
-                                <div class="col-md-2">
-                                    <img src="{{ asset('adminty\assets\images\auth\Logo-small-bottom.png') }}" alt="small-logo.png">
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </form>

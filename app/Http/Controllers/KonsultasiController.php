@@ -47,14 +47,10 @@ class KonsultasiController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $form = $this->validate($request, [
             'nama' => 'required|string',
             'email' => 'required|string',
             'pertanyaan' => 'required|string',
-            'jawaban' => '',
-            'jawaban_by' => '',
-            'jawaban_at' => '',
             'g-recaptcha-response' => 'recaptcha',
         ]);
 

@@ -37,8 +37,8 @@ class KonsultasiMail extends Mailable
     public function build()
     {
         return $this->view('mail.konsultasi')
-        ->from('baznaz.pekanbaru@baznaz.go.id', 'Baznaz Kota Pekanbaru')
+        ->from('baznas.pekanbaru@baznas.go.id', 'Baznas Kota Pekanbaru')
         ->subject('Konsultasi Zakat')
-        ->replyTo('baznaz.pekanbaru@baznaz.go.id', 'Baznaz Kota Pekanbaru');
+        ->replyTo('baznas.pekanbaru@baznas.go.id', 'Baznas Kota Pekanbaru');
     }
 }

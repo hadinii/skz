@@ -54,7 +54,6 @@ $title = "Data Ustadz"
                                         <th>#</th>
                                         <th>Nama</th>
                                         <th>Email</th>
-                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -64,11 +63,7 @@ $title = "Data Ustadz"
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->email }}</td>
-                                            <td></td>
                                             <td>
-                                                <button class="btn btn-sm btn-primary btn-edit px-2" data-form="{{ $row }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
-                                                    <i class="feather icon-edit mx-auto"></i>
-                                                </button>
                                                 <button class="btn btn-sm btn-warning btn-change-pw px-2" data-id="{{ $row->id }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Ubah Password">
                                                     <i class="feather icon-unlock mx-auto"></i>
                                                 </button>
@@ -84,7 +79,6 @@ $title = "Data Ustadz"
                                     <th>#</th>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 </tfoot>
@@ -95,6 +89,7 @@ $title = "Data Ustadz"
             </div>
         </div>
     </div>
+    {{-- Modal Create --}}
     <div class="modal fade" id="modal-create" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <form action="{{ route('user.store') }}" method="post">
@@ -127,6 +122,49 @@ $title = "Data Ustadz"
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+    {{-- Modal Change Password --}}
+    <div class="modal fade" id="modal-change-password" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Ubah Password</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="form-change-password" action="" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        @if($errors->any())
+                            <div class="alert alert-warning background-warning">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="icofont icofont-close-line-circled text-white"></i>
+                                </button>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <div class="form-group form-primary">
+                            <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Baru" value="{{ old('password') }}" required>
+                            <span class="form-bar"></span>
+                        </div>
+                        <div class="form-group form-primary">
+                            <input type="password" id="password2" name="password2" class="form-control @error('password2') is-invalid @enderror" placeholder="Konfirmasi Password Baru" value="{{ old('password2') }}" required>
+                            <span class="form-bar"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 @endsection

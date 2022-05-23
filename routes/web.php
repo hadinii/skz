@@ -15,18 +15,18 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/mail/{konsultasi}', [App\Http\Controllers\HomeController::class, 'mail'])->name('mail');
 
 Route::prefix('konsultasi')->name('konsultasi.')->group(function () {
     Route::get('/', [App\Http\Controllers\KonsultasiController::class, 'index'])->name('index')->middleware('auth');
-    Route::get('/create', [App\Http\Controllers\KonsultasiController::class, 'create'])->name('create');
     Route::get('/{konsultasi}', [App\Http\Controllers\KonsultasiController::class, 'show'])->name('show')->middleware('auth');
     Route::put('/{konsultasi}', [App\Http\Controllers\KonsultasiController::class, 'update'])->name('update')->middleware('auth');
-    Route::post('/', [App\Http\Controllers\KonsultasiController::class, 'store'])->name('store');
+    Route::post('/', [App\Http\Controllers\KonsultasiController::class, 'store'])->name('store')->middleware('auth');
 
 });
 

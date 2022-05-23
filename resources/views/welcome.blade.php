@@ -1,5 +1,72 @@
-@extends('layouts.header')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Konsultasi Zakat Online - Baznas Kota Pekanbaru</title>
+    <!-- Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Landing page template for creative dashboard">
+    <meta name="keywords" content="Landing page template">
+    <!-- Favicon icon -->
+    <link rel="icon" href="{{ asset('adminty\extra-pages\landingpage\assets\logos\favicon.ico') }}" type="image/png" sizes="16x16">
+    <!-- Bootstrap -->
+    <link href="{{ asset('adminty\extra-pages\landingpage\assets\css\bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="all">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,700,600" rel="stylesheet" type="text/css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{{ asset('adminty\extra-pages\landingpage\assets\css\animate.css') }}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{ asset('adminty\extra-pages\landingpage\assets\css\owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminty\extra-pages\landingpage\assets\css\owl.theme.css') }}">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="{{ asset('adminty\extra-pages\landingpage\assets\css\magnific-popup.css') }}">
+    <!-- Full Page Animation -->
+    <link rel="stylesheet" href="{{ asset('adminty\extra-pages\landingpage\assets\css\animsition.min.css') }}">
+    <!-- Ionic Icons -->
+    <link rel="stylesheet" href="{{ asset('adminty\extra-pages\landingpage\assets\css\ionicons.min.css') }}">
+    <!-- Main Style css -->
+    <link href="{{ asset('adminty\extra-pages\landingpage\assets\css\style.css') }}" rel="stylesheet" type="text/css" media="all">
+    {{-- reCAPTCHA --}}
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
+</head>
+<body>
+
+    <div class="wrapper animsition" data-animsition-in-class="fade-in" data-animsition-in-duration="1000" data-animsition-out-class="fade-out" data-animsition-out-duration="1000">
+        <div class="container">
+             <nav class="navbar navbar-expand-lg navbar-light navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <a class="navbar-brand page-scroll" href="#main"><img src="{{ asset('adminty\extra-pages\landingpage\assets\logos\logo.png') }}" alt="adminity Logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                        </ul>
+                        <ul class="navbar-nav my-2 my-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#main">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#services">Important</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#features">Benefits</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#reviews">Testimonials</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="#konsultasi">Konsultasi</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="main" id="main">
+            <!-- Main Section-->
             <div class="hero-section app-hero">
                 <div class="container">
                     <div class="hero-content app-hero-content text-center">
@@ -9,7 +76,7 @@
                                 <p class="wow fadeInUp" data-wow-delay="0.2s">
                                     Konsultasi zakat, cepat dan mudah. Dijawab langsung oleh oleh ahli-nya. <br class="hidden-xs"> Konsultasikan zakat anda sekarang!
                                 </p>
-                                <a class="btn btn-primary btn-action" data-wow-delay="0.2s" href="{{ route('konsultasi.create') }}">Konsultasi</a>
+                                <a class="btn btn-primary btn-action" data-wow-delay="0.5s" href="#konsultasi">Konsultasi</a>
                             </div>
                             <div class="col-md-12">
                                 <div class="hero-image">
@@ -283,60 +350,57 @@
                 </div>
             </div>
             <!-- Pricing Section -->
-            <div class="pricing-section no-color text-center" id="pricing">
+            <div class="pricing-section no-color text-center" id="konsultasi">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 ">
                             <div class="pricing-intro">
-                                <h1 class="wow fadeInUp" data-wow-delay="0s">Pricing Table</h1>
+                                <h1 class="wow fadeInUp" data-wow-delay="0s">Konsultasi Online</h1>
                                 <p class="wow fadeInUp" data-wow-delay="0.2s">
-                                    Loream ipsum dummy text loream ipsum dummy text loream ipsum dummy text <br class="hidden-xs"> loream ipsum dummy text. Get the right plan that suits you.
+                                    Jika anda memiliki pertanyaan seputar zakat, silakan mengisi form berikut ini. <br class="hidden-xs"> Pertanyaan anda akan dijawab oleh ahli-nya.
                                 </p>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="table-left wow fadeInUp" data-wow-delay="0.4s">
-                                        <div class="icon">
-                                            <img src="{{ asset('adminty\extra-pages\landingpage\assets\logos\cart2.png') }}" alt="Icon">
+                            <form class="md-float-material form-material" method="POST" action="{{ route('konsultasi.store') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Nama
+                                                <small>*</small>
+                                            </label>
+                                            <input class="form-control" type="text" name="nama" id="nama" placeholder="Masukkan Nama" required>
                                         </div>
-                                        <div class="pricing-details">
-                                            <h2>Beginner Plan</h2>
-                                            <span>$5.90</span>
-                                            <p>
-                                                Pay little enjoy the product <br class="hidden-xs"> for life time.
-                                            </p>
-                                            <ul>
-                                                <li>First basic feature </li>
-                                                <li>Second feature goes here</li>
-                                                <li>Any other third feature</li>
-                                                <li>And the last one goes here</li>
-                                            </ul>
-                                            <button class="btn btn-primary btn-action btn-fill">Get Plan</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email
+                                                <small>*</small>
+                                            </label>
+                                            <input class="form-control" type="email" name="email" id="email" placeholder="Masukkan Email" required>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 ">
-                                    <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
-                                        <div class="icon">
-                                            <img src="{{ asset('adminty\extra-pages\landingpage\assets\logos\cart1.png') }}" alt="Icon">
-                                        </div>
-                                        <div class="pricing-details">
-                                            <h2>Premium Plan</h2>
-                                            <span>$19.99</span>
-                                            <p>
-                                                Pay only for what you use. Flexible <br class="hidden-xs"> payment options.
-                                            </p>
-                                            <ul>
-                                                <li>First premium feature </li>
-                                                <li>Second premium one goes here</li>
-                                                <li>Third premium feature here</li>
-                                                <li>Final premium feature</li>
-                                            </ul>
-                                            <button class="btn btn-primary btn-action btn-fill">Buy Now</button>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Pertanyaan
+                                                <small>*</small>
+                                            </label>
+                                            <textarea class="form-control" name="pertanyaan" rows="5" placeholder="Tuliskan Pertanyaan Anda." required></textarea>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="row justify-content-center">
+                                    {!! htmlFormSnippet() !!}
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-action mt-5">Kirim</button>
+                                {{-- <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                        </div>
+                                    </div>
+                                </div> --}}
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -382,7 +446,39 @@
                     </div>
                 </div>
             </div>
-
+            <!-- Footer Section -->
+            <div class="footer">
+                <div class="container">
+                    <div class="col-md-12 text-center">
+                        <img src="{{ asset('adminty\extra-pages\landingpage\assets\logos\logo.png') }}" alt="Adminty Logo">
+                        <ul class="footer-menu">
+                            <li><a href="http://demo.com">Site</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                        <div class="footer-text">
+                            <p>
+                                Copyright © 2017 Adminty. All Rights Reserved.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Scroll To Top -->
+            <a id="back-top" class="back-to-top page-scroll" href="#main">
+                <i class="ion-ios-arrow-thin-up"></i>
+            </a>
+            <!-- Scroll To Top Ends-->
+        </div>
+        <!-- Main Section -->
     </div>
     <!-- Wrapper-->
-
+    <!-- Jquery and Js Plugins -->
+    <script type="text/javascript" src="{{ asset('adminty\extra-pages\landingpage\assets\js\jquery-2.1.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminty\extra-pages\landingpage\assets\js\bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminty\extra-pages\landingpage\assets\js\plugins.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminty\extra-pages\landingpage\assets\js\menu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminty\extra-pages\landingpage\assets\js\custom.js') }}"></script>
+</body>
+</html>
