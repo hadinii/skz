@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('adminty\extra-pages\landingpage\assets\css\owl.theme.css') }}">
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="{{ asset('adminty\extra-pages\landingpage\assets\css\magnific-popup.css') }}">
+    <!-- Notification.css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\pages\notification\notification.css') }}">
     <!-- Full Page Animation -->
     <link rel="stylesheet" href="{{ asset('adminty\extra-pages\landingpage\assets\css\animsition.min.css') }}">
     <!-- Ionic Icons -->
@@ -48,7 +50,7 @@
                             <li class="nav-item">
                                 <a class="nav-link page-scroll" href="#main">Home</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link page-scroll" href="#services">Important</a>
                             </li>
                             <li class="nav-item">
@@ -56,7 +58,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link page-scroll" href="#reviews">Testimonials</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link page-scroll" href="#konsultasi">Konsultasi</a>
                             </li>
@@ -87,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="services-section text-center" id="services">
+            {{-- <div class="services-section text-center" id="services">
                 <!-- Services section (small) with icons -->
                 <div class="container">
                     <div class="row  justify-content-md-center">
@@ -348,7 +350,7 @@
                 </div>
                 <div class="f-right">
                 </div>
-            </div>
+            </div> --}}
             <!-- Pricing Section -->
             <div class="pricing-section no-color text-center" id="konsultasi">
                 <div class="container">
@@ -406,7 +408,7 @@
                 </div>
             </div>
             <!-- Client Section -->
-            <div class="client-section">
+            {{-- <div class="client-section">
                 <div class="container text-center">
                     <div class="clients owl-carousel owl-theme">
                         <div class="single">
@@ -445,21 +447,21 @@
                         <div class="error-message"></div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Footer Section -->
             <div class="footer">
                 <div class="container">
                     <div class="col-md-12 text-center">
-                        <img src="{{ asset('adminty\extra-pages\landingpage\assets\logos\logo.png') }}" alt="Adminty Logo">
+                        <img src="{{ asset('adminty\assets\images\logo1.png') }}" alt="Adminty Logo">
                         <ul class="footer-menu">
-                            <li><a href="http://demo.com">Site</a></li>
+                            <li><a href="#">Site</a></li>
                             <li><a href="#">Support</a></li>
                             <li><a href="#">Terms</a></li>
                             <li><a href="#">Privacy</a></li>
                         </ul>
                         <div class="footer-text">
                             <p>
-                                Copyright © 2017 Adminty. All Rights Reserved.
+                                Copyright © 2022 Baznas Kota Pekanbaru. All Rights Reserved.
                             </p>
                         </div>
                     </div>
@@ -480,5 +482,15 @@
     <script type="text/javascript" src="{{ asset('adminty\extra-pages\landingpage\assets\js\plugins.js') }}"></script>
     <script type="text/javascript" src="{{ asset('adminty\extra-pages\landingpage\assets\js\menu.js') }}"></script>
     <script type="text/javascript" src="{{ asset('adminty\extra-pages\landingpage\assets\js\custom.js') }}"></script>
+    <!-- notification js -->
+    <script type="text/javascript" src="{{ asset('adminty\assets\js\bootstrap-growl.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminty\assets\pages\notification\notification.js') }}"></script>
+    <script>
+        // show success notification on success
+        @if ($message = session('success'))
+            const message = '{{ $message }}'
+            notify('fas fa-check', 'success', message);
+        @endif
+    </script>
 </body>
 </html>

@@ -48,4 +48,10 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    // Relations
+    public function konsultasi()
+    {
+        return $this->hasMany(Konsultasi::class, 'jawaban_by');
+    }
 }

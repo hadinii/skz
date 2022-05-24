@@ -1,3 +1,6 @@
+<?php
+$title = "Konsultasi Zakat"
+?>
 @extends('layouts.admin')
 
 @section('content')
@@ -6,8 +9,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Sample Page</h4>
-                        <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                        <h4>{{ $title }}</h4>
                     </div>
                 </div>
             </div>
@@ -15,9 +17,9 @@
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
-                            <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
+                            <a href="{{ route('dashboard') }}"> <i class="feather icon-home"></i> </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Widget</a> </li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">{{ $title }}</a> </li>
                     </ul>
                 </div>
             </div>

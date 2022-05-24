@@ -33,4 +33,5 @@ Route::prefix('konsultasi')->name('konsultasi.')->group(function () {
 Route::prefix('user')->name('user.')->group(function () {
     Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('index')->middleware('auth');
     Route::post('/', [App\Http\Controllers\UserController::class, 'store'])->name('store')->middleware('auth');
+    Route::put('/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('update')->middleware('auth');
 });

@@ -56,7 +56,9 @@ class KonsultasiController extends Controller
 
         Konsultasi::create($form);
 
-        return redirect('/');
+        return redirect()
+            ->route('home')
+            ->withSuccess('Pertanyaan telah terkirim!');
     }
 
     /**

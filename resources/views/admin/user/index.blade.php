@@ -54,6 +54,7 @@ $title = "Data Ustadz"
                                         <th>#</th>
                                         <th>Nama</th>
                                         <th>Email</th>
+                                        <th>Pertanyaan Terjawab</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -63,13 +64,14 @@ $title = "Data Ustadz"
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->email }}</td>
+                                            <td>{{ $row->konsultasi()->count() }}</td>
                                             <td>
                                                 <button class="btn btn-sm btn-warning btn-change-pw px-2" data-id="{{ $row->id }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Ubah Password">
                                                     <i class="feather icon-unlock mx-auto"></i>
                                                 </button>
-                                                <button class="btn btn-sm btn-danger btn-delete px-2" data-id="{{ $row->id }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus">
+                                                {{-- <button class="btn btn-sm btn-danger btn-delete px-2" data-id="{{ $row->id }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus">
                                                     <i class="feather icon-trash-2 mx-auto"></i>
-                                                </button>
+                                                </button> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -79,6 +81,7 @@ $title = "Data Ustadz"
                                     <th>#</th>
                                     <th>Nama</th>
                                     <th>Email</th>
+                                    <th>Pertanyaan Terjawab</th>
                                     <th>Actions</th>
                                 </tr>
                                 </tfoot>
@@ -102,6 +105,18 @@ $title = "Data Ustadz"
                         </button>
                     </div>
                     <div class="modal-body">
+                        @if($errors->any())
+                            <div class="alert alert-warning background-warning">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="icofont icofont-close-line-circled text-white"></i>
+                                </button>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="form-group form-primary">
                             <label for="name">Nama Ustadz</label>
                             <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required>
@@ -151,7 +166,7 @@ $title = "Data Ustadz"
                             </div>
                         @endif
                         <div class="form-group form-primary">
-                            <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Baru" value="{{ old('password') }}" required>
+                            <input type="password" id="password1" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Baru" value="{{ old('password') }}" required>
                             <span class="form-bar"></span>
                         </div>
                         <div class="form-group form-primary">
@@ -174,8 +189,35 @@ $title = "Data Ustadz"
     <script src="{{ asset('adminty\bower_components\datatables.net\js\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('adminty\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js') }}"></script>
     <script>
+        const url = '{{ route('user.index') }}';
+
         $(document).ready(function() {
             $('#simpletable').DataTable();
+
         });
+        // on change passwd
+        $('.btn-change-pw').click(function() {
+            $('#modal-change-password').modal('show');
+            const id = $(this).data('id');
+            $('#form-change-password').attr('action', `${url}/${id}`);
+        });
+        $('#form-change-password').submit(function(event) {
+            const password = $('#password1').val();
+            const password2 = $('#password2').val();
+            if(password != password2){
+                event.preventDefault();
+                notify('fas fa-check', 'danger', 'Konfirmasi Password harus sama!');
+            }
+        });
+
+        // show modal if any errors
+        @if ($errors->any())
+            $('#modal-create-edit').modal('show');
+        @endif
+        // show success notification on success
+        @if ($message = session('success'))
+            const message = '{{ $message }}'
+            notify('fas fa-check', 'success', message);
+        @endif
     </script>
 @endpush

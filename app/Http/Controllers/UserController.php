@@ -40,7 +40,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
         $form = $this->validate($request, [
             'name' => 'required|string',
             'email' => 'email',
@@ -85,7 +84,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->only(['jawaban']));
+
+        return redirect()
+            ->route('user.index')
+            ->withSuccess('Berhasil mengubah password!');
     }
 
     /**

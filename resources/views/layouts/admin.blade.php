@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Adminty - Premium Admin Template by Colorlib</title>
+    <title>Konsultasi Zakat Online - Baznas Kota Pekanbaru</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\icon\themify-icons\themify-icons.css') }}">
     <!-- ico font -->
     <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\icon\icofont\css\icofont.css') }}">
+    <!-- Notification.css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\pages\notification\notification.css') }}">
     <!-- feather Awesome -->
     <link rel="stylesheet" type="text/css" href="{{ asset('adminty\assets\icon\feather\css\feather.css') }}">
     <!-- Style.css -->
@@ -66,6 +68,9 @@
 <!-- modernizr js -->
 <script type="text/javascript" src="{{ asset('adminty\bower_components\modernizr\js\modernizr.js') }}"></script>
 <script type="text/javascript" src="{{ asset('adminty\bower_components\modernizr\js\css-scrollbars.js') }}"></script>
+<!-- notification js -->
+<script type="text/javascript" src="{{ asset('adminty\assets\js\bootstrap-growl.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('adminty\assets\pages\notification\notification.js') }}"></script>
 
 <!-- i18next.min.js -->
 <script type="text/javascript" src="{{ asset('adminty\bower_components\i18next\js\i18next.min.js') }}"></script>

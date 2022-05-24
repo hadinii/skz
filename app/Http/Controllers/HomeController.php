@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Konsultasi;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $konsultasiAll = Konsultasi::count();
+        $konsultasiAnswered = Konsultasi::whereNotNull('jawaban_at')->count();
+        $konsultasiUnanswered = Konsultasi::whereNull('jawaban_at')->count();
+        $ustadz = User::where('is_admin', false)->count();
+
+        $data = [
+            'konsultasiAll' => $konsultasiAll,
+            'konsultasiAnswered' => $konsultasiAnswered,
+            'konsultasiUnanswered' => $konsultasiUnanswered,
+            'ustadz' => $ustadz
+        ];
+        return view('admin.dashboard', $data);
     }
 
     public function mail(Konsultasi $konsultasi)
