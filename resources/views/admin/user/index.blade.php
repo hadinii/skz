@@ -6,6 +6,8 @@ $title = "Data Ustadz"
 @push('styles')
     <!-- Data Table Css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('adminty\bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css') }}">
+    <!-- Switch component css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminty\bower_components\switchery\css\switchery.min.css') }}">
 @endpush
 
 @section('content')
@@ -55,6 +57,7 @@ $title = "Data Ustadz"
                                         <th>Nama</th>
                                         <th>Email</th>
                                         <th>Pertanyaan Terjawab</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -65,6 +68,10 @@ $title = "Data Ustadz"
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->email }}</td>
                                             <td>{{ $row->konsultasi()->count() }}</td>
+                                            <td>
+                                                <span class="mr-2">{{ $row->is_aktif ? "Aktif" : "Non-Aktif" }}</span>
+                                                <input type="checkbox" name="is_aktif" data-id="{{ $row->id }}" class="js-switch" {{ $row->is_aktif ? "checked" : "" }}>
+                                            </td>
                                             <td>
                                                 <button class="btn btn-sm btn-warning btn-change-pw px-2" data-id="{{ $row->id }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Ubah Password">
                                                     <i class="feather icon-unlock mx-auto"></i>
@@ -82,6 +89,7 @@ $title = "Data Ustadz"
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Pertanyaan Terjawab</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 </tfoot>
@@ -188,13 +196,30 @@ $title = "Data Ustadz"
     <!-- data-table js -->
     <script src="{{ asset('adminty\bower_components\datatables.net\js\jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('adminty\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Switch component js -->
+    <script type="text/javascript" src="{{ asset('adminty\bower_components\switchery\js\switchery.min.js') }}"></script>
     <script>
         const url = '{{ route('user.index') }}';
+        const csrf = '{{ csrf_token() }}';
 
         $(document).ready(function() {
             $('#simpletable').DataTable();
-
+            // Multiple swithces
+	        var elem = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+            elem.forEach(function(html) {
+                var switchery = new Switchery(html, { color: '#4680ff', jackColor: '#fff', size: 'small' });
+                html.onchange = function(e) {
+                    const data = {
+                        _method: 'PUT',
+                        _token: '{{ csrf_token() }}',
+                        is_aktif: html.checked ? 1 : 0
+                    }
+                    $.post(`${url}/status/${$(this).data('id')}`, data, function(res) {
+                        notify('fas fa-check', 'success', res.message);
+                    })
+            });
         });
+
         // on change passwd
         $('.btn-change-pw').click(function() {
             $('#modal-change-password').modal('show');

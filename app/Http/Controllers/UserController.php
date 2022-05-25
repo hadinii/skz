@@ -84,11 +84,30 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update($request->only(['jawaban']));
+        $user->update($request->only(['password']));
 
         return redirect()
             ->route('user.index')
             ->withSuccess('Berhasil mengubah password!');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStatus(Request $request, User $user)
+    {
+        // return 'asd';
+        $user->update($request->only(['is_aktif']));
+
+        $data = [
+            'status' => 'Success',
+            'message' => 'Berhasil mengubah status!'
+        ];
+        return response()->json($data);
     }
 
     /**
