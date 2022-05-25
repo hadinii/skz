@@ -217,9 +217,9 @@ $title = "Data Ustadz"
                     $.post(`${url}/status/${$(this).data('id')}`, data, function(res) {
                         notify('fas fa-check', 'success', res.message);
                     })
+                };
             });
         });
-
         // on change passwd
         $('.btn-change-pw').click(function() {
             $('#modal-change-password').modal('show');
