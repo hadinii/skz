@@ -17,7 +17,7 @@
             @if (Auth::user()->is_admin)
                 <li class="{{ Request::is('user') ? "active" : ""}}">
                     <a href="{{ route('user.index') }}">
-                        <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
+                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                         <span class="pcoded-mtext">Data Ustadz</span>
                     </a>
                 </li>

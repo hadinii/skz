@@ -38,10 +38,9 @@
                             <i class="feather icon-chevron-down"></i>
                         </div>
                         <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
+                            <li onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <a href="javascript:void(0)">
                                     <i class="feather icon-log-out"></i> Logout
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
