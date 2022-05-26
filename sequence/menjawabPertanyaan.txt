@@ -1,0 +1,30 @@
+@startuml
+actor User
+boundary DashboardView
+boundary KonsultasiIndex
+boundary KonsultasiShow
+control KonsultasiController
+entity Konsultasi
+
+'Read
+User -> DashboardView : Klik menu Konsultasi Zakat
+DashboardView -> KonsultasiController : index()
+KonsultasiController -> Konsultasi : Konsultasi::get()
+Konsultasi --> KonsultasiController : response
+KonsultasiController --> KonsultasiIndex : Show data Konsultasi
+
+'Show
+User -> KonsultasiIndex : Klik Lihat Pertanyaan button
+KonsultasiIndex -> KonsultasiController : show()
+KonsultasiController -> Konsultasi : Konsultasi::find()
+Konsultasi --> KonsultasiController : response
+KonsultasiController --> KonsultasiShow : redirect
+User -> KonsultasiShow : Klik Balas button
+User -> KonsultasiShow : Input jawaban field
+User -> KonsultasiShow : Klik Kirim button
+KonsultasiShow -> KonsultasiController : update()
+KonsultasiController -> Konsultasi : Konsultasi::update()
+Konsultasi -> Konsultasi : Mail::(new KonsultasiMail)
+Konsultasi --> KonsultasiController : response
+KonsultasiController --> KonsultasiShow : redirect
+@enduml

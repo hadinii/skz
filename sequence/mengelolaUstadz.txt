@@ -1,0 +1,49 @@
+@startuml
+actor Admin
+boundary DashboardView
+boundary UstadzIndexView
+control UserController
+entity User
+
+'Read
+Admin -> DashboardView : Klik menu Data Ustadz
+DashboardView -> UserController : index()
+UserController -> User : User::get()
+User --> UserController : response
+UserController --> UstadzIndexView : Show data Ustadz
+
+'Create
+Admin -> UstadzIndexView : Klik Tambah Ustadz button
+UstadzIndexView -> UstadzIndexView : Show create Ustadz modal
+Admin -> UstadzIndexView : Input data Ustadz
+Admin -> UstadzIndexView : Klik Save button
+UstadzIndexView -> UserController : store()
+UserController -> User : User::create()
+User --> UserController : response
+alt create success
+    UserController --> UstadzIndexView : redirect with success message
+else create failed
+    UserController --> UstadzIndexView : redirect with error message
+end
+
+'Update
+Admin -> UstadzIndexView : Klik Ganti Password button
+UstadzIndexView -> UstadzIndexView : Show change password modal
+Admin -> UstadzIndexView : Input password & konfirmasi
+Admin -> UstadzIndexView : Klik Save button
+alt password == konfirmasi password
+    UstadzIndexView -> UserController : update()
+    UserController -> User : User::update()
+    User --> UserController : response
+    UserController --> UstadzIndexView : redirect with success message
+else password != konfirmasi password
+    UstadzIndexView -> UstadzIndexView : Show error alert
+end
+
+'Update
+Admin -> UstadzIndexView : Toggle status Ustadz
+UstadzIndexView -> UserController : update()
+UserController -> User : User::update()
+User --> UserController : response
+UserController --> UstadzIndexView : show success alert
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+actor Ustadz
+boundary DashboardView
+boundary KonsultasiIndex
+boundary KonsultasiShow
+control KonsultasiController
+entity Konsultasi
+
+'Read
+Ustadz -> DashboardView : Klik menu Konsultasi Zakat
+DashboardView -> KonsultasiController : index()
+KonsultasiController -> Konsultasi : Konsultasi::get()
+Konsultasi --> KonsultasiController : response
+KonsultasiController --> KonsultasiIndex : Show data Konsultasi
+
+'Show
+Ustadz -> KonsultasiIndex : Klik Lihat Pertanyaan button
+KonsultasiIndex -> KonsultasiController : show()
+KonsultasiController -> Konsultasi : Konsultasi::find()
+Konsultasi --> KonsultasiController : response
+KonsultasiController --> KonsultasiShow : redirect
+@enduml

@@ -237,7 +237,7 @@ $title = "Data Ustadz"
 
         // show modal if any errors
         @if ($errors->any())
-            $('#modal-create-edit').modal('show');
+            $('#modal-create').modal('show');
         @endif
         // show success notification on success
         @if ($message = session('success'))

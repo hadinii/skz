@@ -1,0 +1,16 @@
+@startuml
+actor CalonMuzakki
+boundary HomeView
+control HomeController
+control KonsultasiController
+entity Konsultasi
+
+CalonMuzakki -> HomeController : Open site url
+HomeController -> HomeView : Show Home page
+CalonMuzakki -> HomeView : Input Konsultasi form
+CalonMuzakki -> HomeView : Klik Kirim button
+HomeView -> KonsultasiController : create()
+KonsultasiController -> Konsultasi : Konsultasi::create()
+Konsultasi --> KonsultasiController : response
+KonsultasiController --> HomeView : redirect with success message
+@enduml

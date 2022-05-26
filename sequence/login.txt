@@ -1,0 +1,19 @@
+@startuml
+actor User as UserActor
+boundary LoginView
+boundary DashboardView
+control LoginController
+entity User
+
+LoginView --> UserActor : Show Login Form
+UserActor -> LoginView : Input Email & Password
+UserActor -> LoginView : Klik Login button
+LoginView -> LoginController : login()
+LoginController -> User : Auth::attempt()
+User --> LoginController : reponse
+alt login success
+    LoginController --> DashboardView : redirect
+else login failed
+    LoginController --> LoginView : redirect with error message
+end
+@enduml
