@@ -9,7 +9,7 @@
                 @csrf
 
                 <div class="text-center">
-                    <img src="{{ asset('adminty\assets\images\logo1.png') }}" alt="logo.png">
+                    <img src="{{ asset('adminty\assets\images\logo1.png') }}" alt="logo.png" width="150">
                 </div>
                 <div class="auth-box card">
                     <div class="card-block">

@@ -452,7 +452,7 @@
             <div class="footer">
                 <div class="container">
                     <div class="col-md-12 text-center">
-                        <img src="{{ asset('adminty\assets\images\logo1.png') }}" alt="Adminty Logo">
+                        <img src="{{ asset('adminty\assets\images\logo1.png') }}" alt="Adminty Logo" width="150">
                         <ul class="footer-menu">
                             <li><a href="#">Site</a></li>
                             <li><a href="#">Support</a></li>
