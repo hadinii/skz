@@ -46,7 +46,6 @@ $title = "Konsultasi Zakat"
                             <ul class="list-unstyled card-option">
                                 <li><i class="feather icon-maximize full-card"></i></li>
                                 <li><i class="feather icon-minus minimize-card"></i></li>
-                                <li><i class="feather icon-trash-2 close-card"></i></li>
                             </ul>
                         </div>
                     </div>
@@ -78,6 +77,7 @@ $title = "Konsultasi Zakat"
                                 <tfoot>
                                 <tr>
                                     <th>Nama</th>
+                                    <th>Status</th>
                                     <th>Pertanyaan</th>
                                     <th>Actions</th>
                                 </tr>
