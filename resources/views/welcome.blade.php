@@ -59,9 +59,9 @@
                             <li class="nav-item">
                                 <a class="nav-link page-scroll" href="#reviews">Testimonials</a>
                             </li> --}}
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link page-scroll" href="#konsultasi">Konsultasi</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
