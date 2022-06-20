@@ -49,7 +49,7 @@ class KonsultasiController extends Controller
     {
         $form = $this->validate($request, [
             'nama' => 'required|string',
-            'email' => 'required|string',
+            'email' => 'required|email:dns',
             'pertanyaan' => 'required|string',
             'g-recaptcha-response' => 'recaptcha',
         ]);

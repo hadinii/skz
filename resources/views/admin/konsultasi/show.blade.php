@@ -52,8 +52,10 @@ $title = "Konsultasi Zakat"
                                 <div class="form-group" id="jawaban_box" style="display: none">
                                     <textarea class="ckeditor form-control" name="jawaban"></textarea>
                                 </div>
+                                @if (!auth()->user()->is_admin)
                                 <button type="button" class="btn btn-primary float-right" id="btn_jawab">Balas</button>
                                 <button type="submit" class="btn btn-primary float-right" id="btn_kirim" style="display: none">Kirim</button>
+                                @endif
                             @else
                                 <div class="media mt-3">
                                     <div class="media-body b-b-theme b-t-theme social-client-description pt-3 mx-3">

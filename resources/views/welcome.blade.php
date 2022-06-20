@@ -364,6 +364,18 @@
                             </div>
                             <form class="md-float-material form-material" method="POST" action="{{ route('konsultasi.store') }}">
                                 @csrf
+                                @if($errors->any())
+                                <div class="alert alert-warning background-warning">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <i class="icofont icofont-close-line-circled text-white"></i>
+                                    </button>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
