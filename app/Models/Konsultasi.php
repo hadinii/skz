@@ -52,7 +52,7 @@ class Konsultasi extends Model
 
     public function getStatusAttribute()
     {
-        return is_null($this->attributes['jawaban_at']) ? "Belum Dijawab" : "Sudah Dijawab";
+        return is_null($this->attributes['jawaban_at']) ? "Belum Dijawab" : "Dijawab Pada ". date('d-m-Y');
     }
 
 }

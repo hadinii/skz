@@ -56,7 +56,9 @@ $title = "Konsultasi Zakat"
                                     <tr>
                                         <th>Nama</th>
                                         <th>Pertanyaan</th>
+                                        <th>Created At</th>
                                         <th>Status</th>
+                                        <th>Dijawab Oleh</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -65,7 +67,13 @@ $title = "Konsultasi Zakat"
                                         <tr>
                                             <td>{{ $row->nama }}</td>
                                             <td>{!! Str::limit($row->pertanyaan, 105, ' ...') !!}</td>
-                                            <td>{{ $row->status }}</td>
+                                            <td>{{ ($row->created_at)->format('d-m-Y') }}</td>
+                                            @if($row->status === "Belum Dijawab")
+                                            <td class="badge bg-warning ">{{ $row->status }}</td>
+                                            @else()
+                                            <td class="badge bg-success">{{ $row->status }}</td>
+                                            @endif
+                                            <td>{{ is_null($row->jawaban_by?->name) ? "-" : $row->jawaban_by?->name}}</td>
                                             <td>
                                                 <a href="{{ route('konsultasi.show', $row->id) }}" class="btn btn-sm btn-inverse px-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Check Pertanyaan">
                                                     <i class="feather icon-info mx-auto"></i>
@@ -77,8 +85,8 @@ $title = "Konsultasi Zakat"
                                 <tfoot>
                                 <tr>
                                     <th>Nama</th>
-                                    <th>Status</th>
                                     <th>Pertanyaan</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 </tfoot>
