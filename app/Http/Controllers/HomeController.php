@@ -28,12 +28,14 @@ class HomeController extends Controller
         $konsultasiAll = Konsultasi::count();
         $konsultasiAnswered = Konsultasi::whereNotNull('jawaban_at')->count();
         $konsultasiUnanswered = Konsultasi::whereNull('jawaban_at')->count();
+        $konsultasiUnansweredShow = Konsultasi::whereNull('jawaban_at')->get();
         $ustadz = User::where('is_admin', false)->count();
 
         $data = [
             'konsultasiAll' => $konsultasiAll,
             'konsultasiAnswered' => $konsultasiAnswered,
             'konsultasiUnanswered' => $konsultasiUnanswered,
+            'konsultasiUnansweredShow' => $konsultasiUnansweredShow,
             'ustadz' => $ustadz
         ];
         return view('admin.dashboard', $data);
